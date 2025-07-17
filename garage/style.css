@@ -1,0 +1,1122 @@
+/* ===================================== */
+/* style.css - Styling Umum dan Responsif */
+/* ===================================== */
+
+/* --- Variabel CSS untuk Tema (Light/Dark Mode) --- */
+:root {
+    /* Warna Dasar (Light Theme) */
+    --primary-color: #007bff; /* Biru cerah, untuk tombol, header, dll. */
+    --primary-dark: #0056b3; /* Biru lebih gelap untuk hover/active */
+    --secondary-color: #6c757d; /* Abu-abu, untuk latar belakang seksi sekunder */
+    --accent-color: #28a745; /* Hijau, untuk success/highlight */
+
+    /* Warna Teks & Latar Belakang (Light Theme) */
+    --background-color: #f8f9fa; /* Latar belakang halaman */
+    --card-background: #ffffff; /* Latar belakang card/form */
+    --text-color: #343a40; /* Teks utama gelap */
+    --light-text-color: #6c757d; /* Teks abu-abu terang */
+    --border-color: #dee2e6; /* Warna border */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Warna shadow */
+}
+
+/* --- Dark Mode Overrides --- */
+[data-theme="dark"] {
+    --primary-color: #4CAF50; /* Hijau sedang */
+    --primary-dark: #388E3C; /* Hijau lebih gelap */
+    --secondary-color: #343a40; /* Abu-abu gelap */
+    --accent-color: #ffc107; /* Kuning (opsional, untuk kontras) */
+
+    --background-color: #212529; /* Latar belakang sangat gelap */
+    --card-background: #2b2f33; /* Latar belakang card/form gelap */
+    --text-color: #e9ecef; /* Teks utama terang */
+    --light-text-color: #adb5bd; /* Teks abu-abu terang */
+    --border-color: #495057; /* Warna border gelap */
+    --shadow-color: rgba(0, 0, 0, 0.3); /* Warna shadow gelap */
+}
+
+/* --- Reset & Base Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+nav .nav-links li {
+    margin-left: 25px;
+}
+
+nav .nav-links a {
+    color: white;
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+}
+
+nav .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+nav .nav-links a:hover::after {
+    width: 100%;
+}
+
+nav .nav-links .auth-links a {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+nav .nav-links .auth-links a:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+nav .nav-links .auth-links a::after {
+    display: none; /* Sembunyikan underline untuk tombol auth */
+}
+
+/* Minimal Header (for login, register, etc.) */
+.minimal-header {
+    box-shadow: none;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--background-color);
+}
+.minimal-header .logo a {
+    color: var(--primary-color);
+}
+.minimal-header nav .nav-links a:not(.btn) {
+    color: var(--text-color);
+}
+.minimal-header nav .nav-links a:not(.btn)::after {
+    background-color: var(--primary-color);
+}
+.minimal-header .dark-mode-toggle {
+    color: var(--text-color);
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    color: white; /* Default white for header */
+    font-size: 1.4rem;
+    cursor: pointer;
+    margin-left: 20px;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .dark-mode-toggle {
+    color: var(--text-color); /* Change color for dark mode button when header is dark */
+}
+
+.minimal-header .dark-mode-toggle {
+    color: var(--text-color); /* Always text color in minimal header */
+}
+
+.dark-mode-toggle:hover {
+    opacity: 0.8;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+.btn-hero {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn-hero:hover {
+    background-color: #218838;
+    transform: translateY(-3px);
+}
+
+.btn-full-width {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Disabled button style */
+.btn.disabled {
+    background-color: var(--secondary-color);
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+/* --- Main Sections Layout --- */
+main {
+    padding: 2rem 0;
+}
+
+section {
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+    background-color: var(--background-color);
+}
+
+section:nth-child(even) {
+    background-color: var(--card-background); /* Latar belakang bergantian */
+}
+
+h1, h2, h3, h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+}
+h2 {
+    font-size: 2.5rem;
+}
+h3 {
+    font-size: 1.8rem;
+}
+h4 {
+    font-size: 1.4rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* --- Hero Section --- */
+.hero, .page-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1500x800?text=Motorcycle+Garage') no-repeat center center/cover;
+    color: white;
+    padding: 6rem 0;
+    text-align: center;
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 1200px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.page-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1500x400?text=Page+Banner') no-repeat center center/cover;
+    padding: 4rem 0;
+    margin-bottom: 3rem;
+}
+
+.hero h1, .page-hero h1 {
+    color: white;
+    margin-bottom: 1.5rem;
+}
+.hero p, .page-hero p {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* --- About Us Section --- */
+.about-us .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-us .about-content img {
+    max-width: 450px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.about-us .about-content p {
+    flex: 1;
+    min-width: 300px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* --- Service & Product Cards (General) --- */
+.service-cards, .service-items, .product-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.service-card, .service-item-card, .product-card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-card:hover, .service-item-card:hover, .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.service-card .icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.service-card h3, .service-item-card h3, .product-card h3 {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.service-item-card img, .product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.service-item-card ul {
+    list-style: disc;
+    padding-left: 20px;
+    text-align: left;
+    margin-bottom: 1rem;
+    color: var(--light-text-color);
+}
+.service-item-card ul li {
+    margin-bottom: 5px;
+}
+
+.product-card .price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+/* --- Testimonials (Carousel) --- */
+/* === KODE INI AKAN DIGANTI === */
+.testimonials {
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 4rem 0; /* Pastikan padding cukup */
+    position: relative; /* Untuk positioning tombol navigasi */
+    overflow: hidden; /* Penting untuk carousel */
+}
+
+.testimonials h2 {
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.carousel-wrapper { /* === BAGIAN BARU DITAMBAHKAN/DIUBAH === */
+    position: relative;
+    max-width: 800px; /* Batasi lebar wrapper carousel */
+    margin: 0 auto;
+    overflow: hidden; /* Sembunyikan slide yang tidak aktif di luar viewport */
+    border-radius: 10px;
+    padding: 0 50px; /* Beri ruang untuk tombol panah */
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    /* Lebar akan diatur oleh JS, setiap slide 100% dari wrapper */
+    height: auto; /* Biarkan tinggi menyesuaikan konten */
+    min-height: 250px; /* Minimal tinggi untuk mencegah lompatan layout */
+    position: relative; /* Penting untuk posisi absolute slide */
+}
+
+.carousel-slide {
+    flex: 0 0 100%; /* Setiap slide mengambil 100% lebar container */
+    max-width: 700px; /* Batasi lebar slide individu (opsional) */
+    margin: 0 auto; /* Tengah slide dalam container */
+    padding: 2rem;
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    color: var(--text-color);
+    box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+
+    /* Kunci utama: posisikan slide secara absolut dan atur display/opacity melalui JS */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Pastikan tinggi konsisten */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out; /* Transisi untuk fade */
+    opacity: 0;
+    pointer-events: none; /* Nonaktifkan interaksi mouse pada slide non-aktif */
+}
+
+.carousel-slide.active { /* Class ini akan ditambahkan oleh JS */
+    opacity: 1;
+    pointer-events: all;
+    position: relative; /* Ubah ke relatif agar mengambil ruang */
+    height: auto; /* Biarkan konten menentukan tinggi */
+}
+
+
+.carousel-slide p {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.carousel-slide h4 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.carousel-slide span {
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+}
+
+/* Navigasi Carousel */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px; /* Padding dari tepi wrapper */
+    z-index: 10; /* Pastikan di atas slide */
+}
+
+.carousel-prev, .carousel-next {
+    background-color: rgba(255, 255, 255, 0.3); /* Sedikit lebih transparan */
+    color: white;
+    border: none;
+    padding: 18px; /* Ukuran lebih besar */
+    border-radius: 50%;
+    font-size: 1.5rem; /* Ukuran ikon lebih besar */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex; /* Untuk menengahkan ikon */
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: rgba(255, 255, 255, 0.5); /* Lebih solid saat hover */
+    transform: scale(1.1);
+}
+
+/* Penyesuaian ikon di dark mode */
+[data-theme="dark"] .carousel-prev,
+[data-theme="dark"] .carousel-next {
+    background-color: rgba(0, 0, 0, 0.4); /* Lebih gelap di dark mode */
+    color: var(--text-color); /* Ambil warna teks dark mode */
+}
+
+[data-theme="dark"] .carousel-prev:hover,
+[data-theme="dark"] .carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+/* === AKHIR BAGIAN BARU DITAMBAHKAN/DIUBAH === */
+
+/* --- Call to Action (CTA) Section --- */
+.cta {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 4rem 0;
+    margin-top: 2rem;
+    border-radius: 8px;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+.cta h2 {
+    color: white;
+}
+.cta p {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* --- Forms (Booking, Login, Register, Forgot Password, Reset Password) --- */
+.auth-section, .booking-form-section, .payment-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px); /* Sesuaikan tinggi agar form di tengah */
+    padding: 2rem 0;
+}
+
+.form-card {
+    background-color: var(--card-background);
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    max-width: 500px;
+    width: 100%;
+    margin: 2rem auto;
+}
+
+.form-card h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.form-description {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--light-text-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.password-group {
+    position: relative;
+}
+
+.password-group .toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 70%; /* Adjust based on input height */
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--light-text-color);
+}
+
+.auth-links-bottom {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+.auth-links-bottom p {
+    margin-bottom: 0.8rem;
+}
+.auth-links-bottom a {
+    font-weight: 600;
+}
+
+/* Payment Form Specific Styles */
+.payment-summary-card {
+    margin-bottom: 2rem;
+    padding: 2rem;
+}
+
+.order-details .order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+.order-details .order-item:last-of-type {
+    border-bottom: none;
+}
+
+.order-details hr {
+    border-color: var(--border-color);
+    margin: 1rem 0;
+}
+
+.order-details .order-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.payment-details-section {
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color); /* Changed to var for consistency */
+    padding-top: 1.5rem;
+}
+
+.payment-details-section h3 {
+    text-align: left;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.payment-details-section .note {
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+    margin-top: 0.5rem;
+}
+
+.e-wallet-options {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.e-wallet-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--border-color);
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.e-wallet-option:hover {
+    background-color: var(--background-color);
+    border-color: var(--primary-color);
+}
+
+.e-wallet-option input[type="radio"] {
+    margin-right: 5px;
+}
+
+.e-wallet-option img {
+    height: 25px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.form-group-inline {
+    display: flex;
+    gap: 1.5rem;
+}
+.form-group-inline .form-group {
+    flex: 1;
+}
+
+.success-message {
+    color: var(--accent-color);
+    text-align: center;
+    margin-top: 1.5rem;
+    font-weight: bold;
+}
+
+.error-message {
+    color: #dc3545; /* Red */
+    text-align: center;
+    margin-top: 1.5rem;
+    font-weight: bold;
+}
+
+/* --- My Bookings Page --- */
+.booking-history-section .info-card {
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.booking-history-section .info-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+.booking-history-section .info-card p {
+    color: var(--text-color);
+}
+
+.booking-list-container {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.booking-item-card {
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+
+.booking-item-card h3 {
+    text-align: left;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.8rem;
+}
+
+.booking-item-card p {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.booking-item-card p strong {
+    color: var(--primary-dark);
+}
+
+.booking-item-card .status-pending {
+    color: #ffc107; /* Yellow */
+    font-weight: bold;
+}
+.booking-item-card .status-completed {
+    color: var(--accent-color); /* Green */
+    font-weight: bold;
+}
+.booking-item-card .status-cancelled {
+    color: #dc3545; /* Red */
+    font-weight: bold;
+}
+
+.booking-actions {
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.no-bookings-message {
+    text-align: center;
+    font-style: italic;
+    color: var(--light-text-color);
+    padding: 2rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+}
+
+/* --- Promo Page --- */
+.promo-list-section .promo-card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    display: flex;
+    flex-direction: column; /* Default for mobile */
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.promo-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.promo-card .promo-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow content to take available space */
+}
+
+.promo-card h3 {
+    text-align: left;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    font-size: 1.8rem;
+}
+
+.promo-card p {
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Push other elements down */
+}
+
+.promo-card .promo-code {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.promo-card .promo-validity {
+    font-size: 0.9rem;
+    color: #dc3545; /* Red for validity */
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.promo-card .btn {
+    width: auto;
+    align-self: flex-start; /* Align button to start */
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 3rem 0 1rem;
+    margin-top: 4rem;
+    box-shadow: 0 -2px 5px var(--shadow-color);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    color: white;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.footer-section p, .footer-section ul {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: white;
+}
+
+.footer-section.contact-info p i {
+    margin-right: 10px;
+    color: white;
+}
+
+.footer-section.social-media a {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.footer-section.social-media a:hover {
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+
+/* ===================================== */
+/* Responsivitas (Media Queries) */
+/* ===================================== */
+
+@media (max-width: 992px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    nav .nav-links {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav .nav-links li {
+        margin: 5px 10px;
+    }
+    .dark-mode-toggle {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    .hero, .page-hero, .cta {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .about-us .about-content {
+        flex-direction: column;
+    }
+    .about-us .about-content img {
+        max-width: 100%;
+    }
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-section {
+        min-width: unset;
+        width: 100%;
+    }
+    .footer-section h3 {
+        text-align: center;
+    }
+    .footer-section ul {
+        text-align: center;
+        padding-left: 0;
+    }
+    .footer-section ul li {
+        display: inline-block;
+        margin: 0 10px 10px 0;
+    }
+    .footer-section.contact-info p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.8rem; }
+    main { padding: 1rem 0; }
+    section { padding: 3rem 0; }
+    .hero, .page-hero { padding: 4rem 0; }
+    .btn-hero { font-size: 1rem; padding: 10px 20px; }
+
+    .service-cards, .service-items, .product-items {
+        grid-template-columns: 1fr; /* Satu kolom di layar kecil */
+    }
+
+    .form-card {
+        padding: 1.5rem;
+    }
+
+    .promo-list-section .promo-card {
+        flex-direction: column; /* Stack image and content */
+    }
+    .promo-card img {
+        height: 200px;
+    }
+    /* === BAGIAN BARU UNTUK RESPONSIVITAS CAROUSEL === */
+    .carousel-wrapper {
+        padding: 0 10px;
+    }
+    .carousel-nav {
+        padding: 0;
+    }
+    .carousel-prev, .carousel-next {
+        padding: 12px;
+        font-size: 1.2rem;
+    }
+    .carousel-slide {
+        padding: 1.5rem;
+    }
+    .carousel-slide p {
+        font-size: 1rem;
+    }
+    /* === AKHIR BAGIAN BARU UNTUK RESPONSIVITAS CAROUSEL === */
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    header { padding: 0.8rem 0; }
+    .logo a { font-size: 1.5rem; }
+    nav .nav-links li { margin-left: 10px; }
+    nav .nav-links .auth-links a { margin-left: 5px; padding: 6px 10px; }
+
+    .hero p { font-size: 1rem; }
+    .about-us .about-content p { font-size: 1rem; }
+
+    .form-group input, .form-group select, .form-group textarea {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    .form-card {
+        padding: 1rem;
+    }
+    .password-group .toggle-password {
+        right: 10px;
+    }
+    .form-group-inline {
+        flex-direction: column; /* Stack inline forms */
+        gap: 0.5rem;
+    }
+    .footer-section.social-media a {
+        font-size: 1.2rem;
+        margin-right: 10px;
+    }
+    .footer-bottom {
+        font-size: 0.8rem;
+    }
+
+    .booking-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .booking-actions .btn {
+        width: 100%;
+    }
+
+    .e-wallet-option {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.3rem;
+        padding: 0.5rem;
+    }
+}

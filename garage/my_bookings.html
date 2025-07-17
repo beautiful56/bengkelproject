@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Saya - ArtAndSpeed</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body data-theme="light">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">ArtAndSpeed</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="layanan.html">Layanan</a></li>
+                    <li><a href="produk.html">Produk</a></li>
+                    <li><a href="promo.html">Promo</a></li>
+                    <li><a href="booking.html" class="btn btn-primary">Booking Baru</a></li>
+                    <li class="auth-links">
+                        <a href="my_bookings.html">Booking Saya</a>
+                        <a href="#" id="logout-link">Logout</a>
+                    </li>
+                </ul>
+                <button class="dark-mode-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Booking Saya</h1>
+                <p>Lihat riwayat booking servis Anda di sini.</p>
+            </div>
+        </section>
+
+        <section class="booking-history-section">
+            <div class="container">
+                <div class="info-card">
+                    <h2>Selamat Datang, [Nama Pengguna]!</h2>
+                    <p>Berikut adalah daftar booking servis Anda.</p>
+                </div>
+
+                <div class="booking-list-container">
+                    <div class="booking-item-card">
+                        <h3>Servis Ringan - Motor Beat</h3>
+                        <p><strong>Tanggal:</strong> 2025-07-20</p>
+                        <p><strong>Waktu:</strong> 10:00 WIB</p>
+                        <p><strong>Status:</strong> <span class="status-pending">Menunggu Konfirmasi</span></p>
+                        <p><strong>Catatan:</strong> "Pengecekan rem depan dan belakang."</p>
+                        <div class="booking-actions">
+                            <button class="btn btn-secondary disabled" title="Tidak dapat dibatalkan jika sudah dikonfirmasi">Batalkan Booking</button>
+                            <button class="btn btn-secondary disabled" title="Tidak dapat diubah jika sudah dikonfirmasi">Ubah Booking</button>
+                        </div>
+                    </div>
+                    <div class="booking-item-card">
+                        <h3>Ganti Oli Mesin - Motor NMAX</h3>
+                        <p><strong>Tanggal:</strong> 2025-07-10</p>
+                        <p><strong>Waktu:</strong> 14:30 WIB</p>
+                        <p><strong>Status:</strong> <span class="status-completed">Selesai</span></p>
+                        <p><strong>Catatan:</strong> "Menggunakan oli Motul."</p>
+                        <div class="booking-actions">
+                            <button class="btn btn-secondary disabled">Batalkan Booking</button>
+                            <button class="btn btn-secondary disabled">Ubah Booking</button>
+                        </div>
+                    </div>
+                    <p class="no-bookings-message" style="display: none;">Anda belum memiliki booking servis.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about-footer">
+                    <h3>ArtAndSpeed</h3>
+                    <p>Bengkel motor terkemuka yang menyediakan solusi perawatan dan modifikasi motor terbaik.</p>
+                </div>
+                <div class="footer-section links">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="layanan.html">Layanan</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li><a href="promo.html">Promo</a></li>
+                        <li><a href="booking.html">Booking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact-info">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Contoh No. 123, Kota Anda, 12345</p>
+                    <p><i class="fas fa-phone"></i> (021) 12345678</p>
+                    <p><i class="fas fa-envelope"></i> info@artandspeed.com</p>
+                </div>
+                <div class="footer-section social-media">
+                    <h3>Ikuti Kami</h3>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ArtAndSpeed. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

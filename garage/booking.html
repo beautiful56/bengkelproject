@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Servis - ArtAndSpeed</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body data-theme="light">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">ArtAndSpeed</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="layanan.html">Layanan</a></li>
+                    <li><a href="produk.html">Produk</a></li>
+                    <li><a href="promo.html">Promo</a></li>
+                    <li><a href="booking.html" class="btn btn-primary">Booking Sekarang</a></li>
+                    <li class="auth-links">
+                        <a href="login.html">Login</a>
+                        <a href="register.html">Register</a>
+                    </li>
+                </ul>
+                <button class="dark-mode-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Jadwalkan Servis Anda</h1>
+                <p>Isi formulir di bawah ini untuk membuat janji temu dengan teknisi kami.</p>
+            </div>
+        </section>
+
+        <section class="booking-form-section">
+            <div class="container">
+                <form id="booking-form" class="form-card">
+                    <h2>Formulir Booking Servis</h2>
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap:</label>
+                        <input type="text" id="name" name="name" required placeholder="Nama Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required placeholder="email@contoh.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Nomor Telepon:</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="081234567890">
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicle-type">Jenis Kendaraan:</label>
+                        <select id="vehicle-type" name="vehicle-type" required>
+                            <option value="">Pilih Jenis</option>
+                            <option value="motor-bebek">Motor Bebek</option>
+                            <option value="motor-sport">Motor Sport</option>
+                            <option value="skutik">Skutik</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicle-model">Merek & Model Motor:</label>
+                        <input type="text" id="vehicle-model" name="vehicle-model" required placeholder="Contoh: Honda Vario 150">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Layanan yang Diinginkan:</label>
+                        <select id="service" name="service" required>
+                            <option value="">Pilih Layanan</option>
+                            <option value="Ganti Oli Mesin">Ganti Oli Mesin</option>
+                            <option value="Servis Ringan">Servis Ringan</option>
+                            <option value="Servis Besar">Servis Besar</option>
+                            <option value="Perbaikan Mesin">Perbaikan Mesin</option>
+                            <option value="Perbaikan Sistem Rem">Perbaikan Sistem Rem</option>
+                            <option value="Upgrade Performa">Upgrade Performa</option>
+                            <option value="Custom Body & Cat">Custom Body & Cat</option>
+                            <option value="Lainnya">Lainnya (jelaskan di Catatan)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-date">Tanggal Booking:</label>
+                        <input type="text" id="booking-date" name="booking-date" required placeholder="Pilih Tanggal">
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-time">Waktu Booking:</label>
+                        <input type="text" id="booking-time" name="booking-time" required placeholder="Pilih Waktu">
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Catatan Tambahan (Opsional):</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Jelaskan detail masalah atau kebutuhan Anda..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full-width">Submit Booking</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about-footer">
+                    <h3>ArtAndSpeed</h3>
+                    <p>Bengkel motor terkemuka yang menyediakan solusi perawatan dan modifikasi motor terbaik.</p>
+                </div>
+                <div class="footer-section links">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="layanan.html">Layanan</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li><a href="promo.html">Promo</a></li>
+                        <li><a href="booking.html">Booking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact-info">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Contoh No. 123, Kota Anda, 12345</p>
+                    <p><i class="fas fa-phone"></i> (021) 12345678</p>
+                    <p><i class="fas fa-envelope"></i> info@artandspeed.com</p>
+                </div>
+                <div class="footer-section social-media">
+                    <h3>Ikuti Kami</h3>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ArtAndSpeed. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/id.js"></script> <script src="script.js"></script>
+</body>
+</html>

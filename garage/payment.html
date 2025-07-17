@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran - ArtAndSpeed</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body data-theme="light">
+    <header class="minimal-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">ArtAndSpeed</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="booking.html" class="btn btn-primary">Booking</a></li>
+                </ul>
+                <button class="dark-mode-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="payment-section">
+            <div class="container">
+                <div class="form-card payment-summary-card">
+                    <h2>Ringkasan Pesanan Anda</h2>
+                    <div class="order-details">
+                        <div class="order-item">
+                            <span>Layanan Servis Ringan</span>
+                            <span>Rp 150.000</span>
+                        </div>
+                        <div class="order-item">
+                            <span>Oli Mesin Sintetik (Produk)</span>
+                            <span>Rp 150.000</span>
+                        </div>
+                        <hr>
+                        <div class="order-total">
+                            <strong>Total Pembayaran:</strong>
+                            <strong>Rp 300.000</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="payment-form" class="form-card payment-form">
+                    <h2>Pilih Metode Pembayaran</h2>
+
+                    <div class="form-group">
+                        <label for="payment-method">Metode Pembayaran:</label>
+                        <select id="payment-method" name="payment_method" required>
+                            <option value="">Pilih Metode</option>
+                            <option value="transfer-bank">Transfer Bank (BCA, Mandiri, BRI)</option>
+                            <option value="kartu-kredit">Kartu Kredit / Debit</option>
+                            <option value="e-wallet">E-Wallet (OVO, GoPay, Dana)</option>
+                        </select>
+                    </div>
+
+                    <div id="transfer-bank-details" class="payment-details-section" style="display: none;">
+                        <h3>Detail Transfer Bank</h3>
+                        <p>Silakan transfer ke rekening berikut:</p>
+                        <p><strong>Bank:</strong> BCA</p>
+                        <p><strong>Nomor Rekening:</strong> 123-456-7890</p>
+                        <p><strong>Atas Nama:</strong> PT. ArtAndSpeed Indonesia</p>
+                        <p class="note">Mohon lakukan transfer dalam waktu 24 jam dan konfirmasi pembayaran Anda.</p>
+                        <button type="submit" class="btn btn-primary btn-full-width">Konfirmasi Pembayaran</button>
+                    </div>
+
+                    <div id="credit-card-details" class="payment-details-section" style="display: none;">
+                        <h3>Detail Kartu Kredit / Debit</h3>
+                        <div class="form-group">
+                            <label for="card-number">Nomor Kartu:</label>
+                            <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX" pattern="[0-9]{13,16}" title="Nomor kartu harus 13-16 digit angka" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-name">Nama Pemegang Kartu:</label>
+                            <input type="text" id="card-name" placeholder="Nama Sesuai Kartu" required>
+                        </div>
+                        <div class="form-group-inline">
+                            <div class="form-group">
+                                <label for="expiry-date">Tanggal Kadaluarsa (MM/YY):</label>
+                                <input type="text" id="expiry-date" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" title="Format MM/YY" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV:</label>
+                                <input type="text" id="cvv" placeholder="XXX" pattern="[0-9]{3,4}" title="3 atau 4 digit angka" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full-width">Bayar Sekarang</button>
+                    </div>
+
+                    <div id="e-wallet-details" class="payment-details-section" style="display: none;">
+                        <h3>Detail E-Wallet</h3>
+                        <p>Pilih e-wallet Anda:</p>
+                        <div class="e-wallet-options">
+                            <label class="e-wallet-option">
+                                <input type="radio" name="e_wallet_provider" value="ovo" checked> OVO
+                                <img src="https://via.placeholder.com/50x25?text=OVO" alt="OVO Logo">
+                            </label>
+                            <label class="e-wallet-option">
+                                <input type="radio" name="e_wallet_provider" value="gopay"> GoPay
+                                <img src="https://via.placeholder.com/50x25?text=GoPay" alt="GoPay Logo">
+                            </label>
+                            <label class="e-wallet-option">
+                                <input type="radio" name="e_wallet_provider" value="dana"> Dana
+                                <img src="https://via.placeholder.com/50x25?text=Dana" alt="Dana Logo">
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full-width">Bayar dengan E-Wallet</button>
+                    </div>
+
+                    <p id="payment-success-message" class="success-message" style="display:none;">Pembayaran Berhasil! Terima kasih atas transaksi Anda.</p>
+                    <p id="payment-error-message" class="error-message" style="display:none;">Terjadi kesalahan saat memproses pembayaran. Silakan coba lagi.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 ArtAndSpeed. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // JS khusus untuk halaman pembayaran untuk menampilkan/menyembunyikan detail metode pembayaran
+        document.addEventListener('DOMContentLoaded', () => {
+            const paymentMethodSelect = document.getElementById('payment-method');
+            const transferBankDetails = document.getElementById('transfer-bank-details');
+            const creditCardDetails = document.getElementById('credit-card-details');
+            const eWalletDetails = document.getElementById('e-wallet-details');
+
+            if (paymentMethodSelect) {
+                paymentMethodSelect.addEventListener('change', (event) => {
+                    transferBankDetails.style.display = 'none';
+                    creditCardDetails.style.display = 'none';
+                    eWalletDetails.style.display = 'none';
+
+                    switch (event.target.value) {
+                        case 'transfer-bank':
+                            transferBankDetails.style.display = 'block';
+                            break;
+                        case 'kartu-kredit':
+                            creditCardDetails.style.display = 'block';
+                            break;
+                        case 'e-wallet':
+                            eWalletDetails.style.display = 'block';
+                            break;
+                    }
+                });
+
+                // Trigger change event on load if a default value is set or for initial display
+                paymentMethodSelect.dispatchEvent(new Event('change'));
+            }
+
+            // Dummy payment submission for demonstration
+            const paymentForm = document.getElementById('payment-form');
+            const successMessage = document.getElementById('payment-success-message');
+            const errorMessage = document.getElementById('payment-error-message');
+
+            if (paymentForm) {
+                paymentForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    successMessage.style.display = 'none';
+                    errorMessage.style.display = 'none';
+
+                    // Simulate API call
+                    setTimeout(() => {
+                        const random = Math.random();
+                        if (random > 0.3) { // 70% chance of success
+                            successMessage.style.display = 'block';
+                            paymentForm.reset();
+                            // Redirect to success page or my_bookings after a few seconds
+                            // setTimeout(() => window.location.href = 'my_bookings.html', 2000);
+                        } else {
+                            errorMessage.style.display = 'block';
+                        }
+                    }, 1500); // Simulate network delay
+                });
+            }
+        });
+    </script>
+</body>
+</html>
